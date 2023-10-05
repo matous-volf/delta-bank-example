@@ -3,11 +3,7 @@ package org.delta.bank.interest;
 import org.delta.bank.account.BaseBankAccount;
 
 public class InterestApplicator {
-    private final InterestCalculator interestCalculator;
-
-    public InterestApplicator(InterestCalculator interestCalculator) {
-        this.interestCalculator = interestCalculator;
-    }
+    private final InterestCalculator interestCalculator = new InterestCalculator();
 
     public void applyInterest(BaseBankAccount account) {
         double interest = interestCalculator.calculateInterest(account);
