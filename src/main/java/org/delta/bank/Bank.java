@@ -1,27 +1,52 @@
 package org.delta.bank;
 
 import org.delta.bank.account.BaseBankAccount;
+import org.delta.bank.account.InterestAccount;
 import org.delta.bank.account.SavingBankAccount;
+import org.delta.bank.account.StudentBankAccount;
+import org.delta.bank.moneyTransfer.InterestApplicator;
+import org.delta.bank.moneyTransfer.InterestCalculator;
 import org.delta.bank.moneyTransfer.MoneyTransferService;
 import org.delta.bank.user.Owner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Bank {
     public void run() throws Exception {
         Owner owner1 = new Owner("John", "Doe");
 
-        BaseBankAccount account1 = new SavingBankAccount(owner1, "1234567890", 2000);
-        BaseBankAccount account2 = new BaseBankAccount(owner1, "0987654321", 2000);
+        List<BaseBankAccount> accounts = new ArrayList<>();
+
+        accounts.add(new BaseBankAccount(owner1, "0987654321", 10000));
+        accounts.add(new SavingBankAccount(owner1, "1234567890", 10000));
+        accounts.add(new StudentBankAccount(owner1, "999999999", 10000));
 
         System.out.println("Before transfer:");
-        System.out.println("Account 1 balance: " + account1.getBalance());
-        System.out.println("Account 2 balance: " + account2.getBalance());
+        for (int i = 0; i < accounts.size(); i++) {
+            BaseBankAccount account = accounts.get(i);
+            System.out.println(i + ". " + account.getOwner().getLastName() + " | " + account.getBalance());
+        }
 
-        MoneyTransferService moneyTransferService = new MoneyTransferService();
+//        MoneyTransferService moneyTransferService = new MoneyTransferService();
+//        moneyTransferService.transferMoney(accounts.get(0), accounts.get(1), 2000);
+//        moneyTransferService.transferMoney(accounts.get(2), accounts.get(1), 2000);
 
-        moneyTransferService.transferMoney(account1, account2, 1000);
+        InterestCalculator interestCalculator = new InterestCalculator();
+        InterestApplicator interestApplicator = new InterestApplicator(interestCalculator);
+
+        for (BaseBankAccount account : accounts) {
+            if (!(account instanceof InterestAccount)) {
+                continue;
+            }
+
+            interestApplicator.applyInterest(account);
+        }
 
         System.out.println("After transfer:");
-        System.out.println("Account 1 balance: " + account1.getBalance());
-        System.out.println("Account 2 balance: " + account2.getBalance());
+        for (int i = 0; i < accounts.size(); i++) {
+            BaseBankAccount account = accounts.get(i);
+            System.out.println(i + ". " + account.getOwner().getLastName() + " | " + account.getBalance());
+        }
     }
 }
