@@ -4,9 +4,8 @@ import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.InterestAccount;
 import org.delta.bank.account.SavingBankAccount;
 import org.delta.bank.account.StudentBankAccount;
-import org.delta.bank.moneyTransfer.InterestApplicator;
-import org.delta.bank.moneyTransfer.InterestCalculator;
-import org.delta.bank.moneyTransfer.MoneyTransferService;
+import org.delta.bank.interest.InterestApplicator;
+import org.delta.bank.interest.InterestCalculator;
 import org.delta.bank.user.Owner;
 
 import java.util.ArrayList;

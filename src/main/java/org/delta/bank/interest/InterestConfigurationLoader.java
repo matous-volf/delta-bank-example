@@ -1,6 +1,5 @@
-package org.delta.bank.moneyTransfer;
+package org.delta.bank.interest;
 
-import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.InterestAccount;
 import org.delta.bank.account.SavingBankAccount;
 import org.delta.bank.account.StudentBankAccount;

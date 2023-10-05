@@ -1,4 +1,4 @@
-package org.delta.bank.moneyTransfer;
+package org.delta.bank.fee;
 
 public class FeeConfigurator {
     private boolean isFreeOfFee;

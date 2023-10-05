@@ -1,4 +1,4 @@
-package org.delta.bank.moneyTransfer;
+package org.delta.bank.fee;
 
 import org.delta.bank.account.BaseBankAccount;
 

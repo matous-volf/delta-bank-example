@@ -1,4 +1,4 @@
-package org.delta.bank.moneyTransfer;
+package org.delta.bank.interest;
 
 public class InterestConfigurator {
     private double interestPercent;
