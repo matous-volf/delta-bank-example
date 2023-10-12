@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-    public void run() {
-        LogService logService = new LogService();
+    LogService logService = new LogService();
+    InterestApplicator interestApplicator = new InterestApplicator();
 
+    public void run() {
         Owner owner1 = new Owner("John", "Doe");
 
         List<BaseBankAccount> accounts = new ArrayList<>();
@@ -27,8 +28,6 @@ public class Bank {
         for (BaseBankAccount account : accounts) {
             logService.logAccountInfo(account);
         }
-
-        InterestApplicator interestApplicator = new InterestApplicator();
 
         for (BaseBankAccount account : accounts) {
             if (!(account instanceof InterestAccount)) {
