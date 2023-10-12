@@ -10,8 +10,9 @@ public class OwnerFactory {
     }
 
     public Owner createOwner(String firstName, String lastName) {
-        logService.log("Creating an owner: " + firstName + " " + lastName);
+        Owner owner = new Owner(firstName, lastName);
+        logService.logOwnerCreation(owner);
 
-        return new Owner(firstName, lastName);
+        return owner;
     }
 }
