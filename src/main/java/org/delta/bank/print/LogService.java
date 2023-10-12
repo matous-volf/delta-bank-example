@@ -12,4 +12,8 @@ public class LogService {
     public void logAccountInfo(BaseBankAccount account) {
         logger.logAccountInfo(account);
     }
+
+    public void logAccountCreation(BaseBankAccount account) {
+        logger.logAccountCreation(account);
+    }
 }
