@@ -1,5 +1,6 @@
 package org.delta.bank.user;
 
+import com.google.inject.Inject;
 import org.delta.bank.account.BankAccountFactory;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.SavingBankAccount;
@@ -13,13 +14,13 @@ import java.util.Map;
 
 public class OwnerService {
     private List<Owner> owners;
+    @Inject
     private OwnerFactory ownerFactory;
+    @Inject
     private LogService logService;
 
     public OwnerService() {
         owners = new ArrayList<>();
-        ownerFactory = new OwnerFactory();
-        logService = new LogService();
     }
 
     public Owner addOwner(String firstName, String lastName) {

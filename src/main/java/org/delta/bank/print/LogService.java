@@ -1,10 +1,12 @@
 package org.delta.bank.print;
 
+import com.google.inject.Inject;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.user.Owner;
 
 public class LogService {
-    private final Logger logger = new ConsoleLogger();
+    @Inject
+    private Logger logger;
 
     public void log(String message) {
         logger.log(message);

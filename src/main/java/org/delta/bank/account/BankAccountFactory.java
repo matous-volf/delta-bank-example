@@ -1,16 +1,14 @@
 package org.delta.bank.account;
 
+import com.google.inject.Inject;
 import org.delta.bank.print.LogService;
 import org.delta.bank.user.Owner;
 
 public class BankAccountFactory {
+    @Inject
     private LogService logService;
+    @Inject
     private AccountNumberService accountNumberService;
-    
-    public BankAccountFactory() {
-        this.logService = new LogService();
-        this.accountNumberService = new AccountNumberService();
-    }
 
     public BaseBankAccount createBaseAccount(Owner owner, double balance) {
         BaseBankAccount account = new BaseBankAccount(owner, accountNumberService.generateAccountNumber(), balance);

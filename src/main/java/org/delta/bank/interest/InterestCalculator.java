@@ -1,10 +1,12 @@
 package org.delta.bank.interest;
 
+import com.google.inject.Inject;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.InterestAccount;
 
 public class InterestCalculator {
-    private final InterestConfigurationLoader interestConfigurationLoader = new InterestConfigurationLoader();
+    @Inject
+    private InterestConfigurationLoader interestConfigurationLoader;
 
     public double calculateInterest(BaseBankAccount account) throws IllegalArgumentException {
         if (!(account instanceof InterestAccount)) {

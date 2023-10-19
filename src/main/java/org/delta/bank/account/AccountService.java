@@ -1,5 +1,6 @@
 package org.delta.bank.account;
 
+import com.google.inject.Inject;
 import org.delta.bank.print.LogService;
 import org.delta.bank.user.Owner;
 
@@ -7,14 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AccountService {
-    private Map<String, BaseBankAccount> accounts;
+    private final Map<String, BaseBankAccount> accounts;
+    @Inject
     private BankAccountFactory accountFactory;
+    @Inject
     private LogService logService;
 
     public AccountService() {
         accounts = new HashMap<>();
-        accountFactory = new BankAccountFactory();
-        logService = new LogService();
     }
 
     public BaseBankAccount addBaseAccount(Owner owner, int balance) {

@@ -1,12 +1,15 @@
 package org.delta.bank.moneyTransfer;
 
+import com.google.inject.Inject;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.accountValidation.AccountValidationService;
 import org.delta.bank.fee.FeeCalculationService;
 
 public class MoneyTransferService {
-    private final AccountValidationService accountValidationService = new AccountValidationService();
-    private final FeeCalculationService feeCalculationService = new FeeCalculationService();
+    @Inject
+    private AccountValidationService accountValidationService;
+    @Inject
+    private FeeCalculationService feeCalculationService ;
 
     public void transferMoney(BaseBankAccount sourceAccount, BaseBankAccount destinationAccount, double amount) throws Exception {
         double amountWithFee = amount + feeCalculationService.calculateFee(sourceAccount, amount);

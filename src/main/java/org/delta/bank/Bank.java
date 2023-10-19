@@ -1,20 +1,26 @@
 package org.delta.bank;
 
+import com.google.inject.Inject;
 import org.delta.bank.account.*;
 import org.delta.bank.interest.InterestApplicator;
+import org.delta.bank.print.ConsoleLogger;
 import org.delta.bank.print.LogService;
+import org.delta.bank.print.Logger;
 import org.delta.bank.user.Owner;
 import org.delta.bank.user.OwnerFactory;
 import org.delta.bank.user.OwnerService;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Bank {
-    private final LogService logService = new LogService();
-    private final InterestApplicator interestApplicator = new InterestApplicator();
-    private final AccountService accountService = new AccountService();
-    private final OwnerService ownerService = new OwnerService();
+    @Inject
+    private LogService logService;
+    @Inject
+    private InterestApplicator interestApplicator;
+    @Inject
+    private AccountService accountService;
+    @Inject
+    private OwnerFactory ownerFactory;
+    @Inject
+    private OwnerService ownerService;
 
     public void run() {
         Owner john = ownerService.addOwner("John", "Doe");
