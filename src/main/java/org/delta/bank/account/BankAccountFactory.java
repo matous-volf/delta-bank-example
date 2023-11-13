@@ -12,27 +12,40 @@ public class BankAccountFactory {
     @Inject
     private AccountNumberService accountNumberService;
 
-    public BaseBankAccount createBaseAccount(Owner owner, double balance) {
-        BaseBankAccount account = new BaseBankAccount(owner, accountNumberService.generateAccountNumber(), balance);
+    public BaseBankAccount createBaseAccount(String accountNumber, double balance, Owner owner) {
+        BaseBankAccount account = new BaseBankAccount(owner, accountNumber, balance);
 
         logService.logAccountCreation(account);
 
         return account;
     }
 
-    public SavingBankAccount createSavingAccount(Owner owner, double balance) {
-        SavingBankAccount account = new SavingBankAccount(owner, accountNumberService.generateAccountNumber(), balance);
+    public BaseBankAccount createBaseAccount(double balance, Owner owner) {
+        return createBaseAccount(accountNumberService.generateAccountNumber(), balance, owner);
+    }
+
+    public SavingBankAccount createSavingAccount(String accountNumber, double balance, Owner owner) {
+        SavingBankAccount account = new SavingBankAccount(owner, accountNumber, balance);
 
         logService.logAccountCreation(account);
 
         return account;
     }
 
-    public StudentBankAccount createStudentAccount(Owner owner, double balance) {
-        StudentBankAccount account = new StudentBankAccount(owner, accountNumberService.generateAccountNumber(), balance);
+    public SavingBankAccount createSavingAccount(double balance, Owner owner) {
+        return createSavingAccount(accountNumberService.generateAccountNumber(), balance, owner);
+    }
+
+    public StudentBankAccount createStudentAccount(String accountNumber, double balance, Owner owner) {
+        StudentBankAccount account = new StudentBankAccount(owner, accountNumber, balance);
 
         logService.logAccountCreation(account);
 
         return account;
+    }
+
+
+    public StudentBankAccount createStudentAccount(double balance, Owner owner) {
+        return createStudentAccount(accountNumberService.generateAccountNumber(), balance, owner);
     }
 }

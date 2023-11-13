@@ -20,20 +20,38 @@ public class AccountService {
         accounts = new HashMap<>();
     }
 
-    public BaseBankAccount addBaseAccount(Owner owner, int balance) {
-        BaseBankAccount account = accountFactory.createBaseAccount(owner, balance);
+    public BaseBankAccount addBaseAccount(String accountNumber, double balance, Owner owner) {
+        BaseBankAccount account = accountFactory.createBaseAccount(accountNumber, balance, owner);
         storeAccount(account);
         return account;
     }
 
-    public SavingBankAccount addSavingAccount(Owner owner, int balance) {
-        SavingBankAccount account = accountFactory.createSavingAccount(owner, balance);
+    public BaseBankAccount addBaseAccount(double balance, Owner owner) {
+        BaseBankAccount account = accountFactory.createBaseAccount(balance, owner);
         storeAccount(account);
         return account;
     }
 
-    public StudentBankAccount addStudentAccount(Owner owner, int balance) {
-        StudentBankAccount account = accountFactory.createStudentAccount(owner, balance);
+    public SavingBankAccount addSavingAccount(String accountNumber, double balance, Owner owner) {
+        SavingBankAccount account = accountFactory.createSavingAccount(accountNumber, balance, owner);
+        storeAccount(account);
+        return account;
+    }
+
+    public SavingBankAccount addSavingAccount(double balance, Owner owner) {
+        SavingBankAccount account = accountFactory.createSavingAccount(balance, owner);
+        storeAccount(account);
+        return account;
+    }
+
+    public StudentBankAccount addStudentAccount(String accountNumber, double balance, Owner owner) {
+        StudentBankAccount account = accountFactory.createStudentAccount(accountNumber, balance, owner);
+        storeAccount(account);
+        return account;
+    }
+
+    public StudentBankAccount addStudentAccount(double balance, Owner owner) {
+        StudentBankAccount account = accountFactory.createStudentAccount(balance, owner);
         storeAccount(account);
         return account;
     }
