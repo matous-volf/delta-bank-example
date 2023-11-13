@@ -1,8 +1,10 @@
 package org.delta.bank.print;
 
+import com.google.inject.Singleton;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.user.Owner;
 
+@Singleton
 public class ConsoleLogger implements Logger {
     public void log(String message) {
         System.out.println(message);

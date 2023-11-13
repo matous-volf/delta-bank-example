@@ -1,8 +1,10 @@
 package org.delta.bank.fee;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.delta.bank.account.BaseBankAccount;
 
+@Singleton
 public class FeeCalculationService {
     @Inject
     private FeeConfigurationLoader feeConfigurationLoader;

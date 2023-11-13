@@ -5,6 +5,7 @@ import org.delta.bank.account.BankAccountFactory;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.SavingBankAccount;
 import org.delta.bank.account.StudentBankAccount;
+import com.google.inject.Singleton;
 import org.delta.bank.print.LogService;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Singleton
 public class OwnerService {
     private List<Owner> owners;
     @Inject

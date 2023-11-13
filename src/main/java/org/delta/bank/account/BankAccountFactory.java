@@ -1,9 +1,11 @@
 package org.delta.bank.account;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.delta.bank.print.LogService;
 import org.delta.bank.user.Owner;
 
+@Singleton
 public class BankAccountFactory {
     @Inject
     private LogService logService;

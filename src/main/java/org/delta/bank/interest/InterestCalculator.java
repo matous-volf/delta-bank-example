@@ -1,9 +1,11 @@
 package org.delta.bank.interest;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.InterestAccount;
 
+@Singleton
 public class InterestCalculator {
     @Inject
     private InterestConfigurationLoader interestConfigurationLoader;
