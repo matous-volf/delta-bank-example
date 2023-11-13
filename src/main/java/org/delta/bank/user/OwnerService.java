@@ -1,10 +1,6 @@
 package org.delta.bank.user;
 
 import com.google.inject.Inject;
-import org.delta.bank.account.BankAccountFactory;
-import org.delta.bank.account.BaseBankAccount;
-import org.delta.bank.account.SavingBankAccount;
-import org.delta.bank.account.StudentBankAccount;
 import com.google.inject.Singleton;
 import org.delta.bank.print.LogService;
 
