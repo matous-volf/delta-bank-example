@@ -11,7 +11,7 @@ public class GsonGenerator implements JsonGenerator {
     Gson gson;
 
     @Override
-    public String generateJsonString(Owner owner) {
-        return gson.toJson(owner);
+    public String generateJsonString(Object object) {
+        return gson.toJson(object);
     }
 }
