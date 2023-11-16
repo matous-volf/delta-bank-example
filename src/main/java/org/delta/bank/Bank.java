@@ -40,7 +40,7 @@ public class Bank {
     @Inject
     private FileService fileService;
     @Inject
-    JsonLoader jsonLoader;
+    private JsonLoader jsonLoader;
 
     public void run() throws IOException {
         if (fileService.fileExists("data/owners.json")
