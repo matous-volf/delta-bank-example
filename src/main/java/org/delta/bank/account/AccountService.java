@@ -1,7 +1,10 @@
 package org.delta.bank.account;
 
+import com.google.common.eventbus.EventBus;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.delta.bank.notification.NotificationDataFactory;
+import org.delta.bank.notification.NotifyCustomerEventFactory;
 import org.delta.bank.print.LogService;
 import org.delta.bank.user.Owner;
 
@@ -15,6 +18,12 @@ public class AccountService {
     private BankAccountFactory accountFactory;
     @Inject
     private LogService logService;
+    @Inject
+    private EventBus eventBus;
+    @Inject
+    private NotificationDataFactory notificationDataFactory;
+    @Inject
+    private NotifyCustomerEventFactory notifyCustomerEventFactory;
 
     public AccountService() {
         accounts = new HashMap<>();
@@ -57,7 +66,12 @@ public class AccountService {
     }
 
     private void storeAccount(BaseBankAccount account) {
+        notifyOwner(account);
         accounts.put(account.getAccountNumber(), account);
+    }
+
+    private void notifyOwner(BaseBankAccount account) {
+        eventBus.post(notifyCustomerEventFactory.create(account.getOwner()));
     }
 
     public Map<String, BaseBankAccount> getAccounts() {
